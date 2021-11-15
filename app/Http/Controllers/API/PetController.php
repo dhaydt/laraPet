@@ -64,6 +64,7 @@ class PetController extends Controller
         $barcode_path = $barcode_img->store($uploadFolder, 'public');
 
         $program = Pet::create([
+            'user_id' => $request->user_id,
             'name' => $request->name,
             'breed' => $request->breed,
             'sex' => $request->sex,
@@ -81,8 +82,6 @@ class PetController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
