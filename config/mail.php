@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Mailer
@@ -36,9 +35,13 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST', 'srv113.niagahoster.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'from' => [
+                    'address' => env('MAIL_FROM_ADDRESS', 'support@howsit-web.com'),
+                    'name' => env('MAIL_FROM_NAME', 'Kind Sarah'),
+            ],
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
@@ -69,6 +72,14 @@ return [
 
         'array' => [
             'transport' => 'array',
+        ],
+
+        'stream' => [
+            'ssl' => [
+                'allow_self_signed' => true,
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ],
         ],
 
         'failover' => [
@@ -114,5 +125,4 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
 ];
